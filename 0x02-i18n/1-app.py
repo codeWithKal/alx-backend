@@ -3,8 +3,6 @@
 from flask import Flask, render_template
 from flask_babel import Babel
 
-app = Flask(__name__)
-
 
 class Config:
     """
@@ -15,7 +13,11 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
+app = Flask(__name__)
+
 app.config.from_object(Config)
+
+app.url_map.strict_slashes = False
 
 babel = Babel(app)
 
